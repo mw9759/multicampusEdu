@@ -11,7 +11,7 @@
 	<h1>회원 로그인</h1>
 	<hr>
 	
-	<form action="login_proc.jsp" method="get">
+	<form action="login.do" method="get">
 	<table border="1" cellpadding="0" cellspacing="0" width="400">
 		<tr>
 			<td bgcolor="orange" width="150">아이디</td>

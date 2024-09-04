@@ -11,7 +11,7 @@
 	<h1>게시글 등록</h1>
 	<hr>
 	
-	<form action="insertBoard_proc.jsp" method="get">
+	<form action="insertBoard.do" method="post">
 	<table border="1" cellpadding="0" cellspacing="0" width="500">
 		<tr>
 			<td bgcolor="orange" width="150">제목</td>
