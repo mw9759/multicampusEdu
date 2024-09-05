@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
 <%--
 	//1. Controller가 세션에 저장해준 데이터를 꺼낸다.
@@ -27,6 +28,13 @@
 <body>
 <center>
 	<h1>게시글 상세</h1>
+	<c:if test="${user.name != null }">
+		<h3><font color="red">${user.name}</font> 님 환영합니다.</h3>
+		<a href="logout.do">LOGOUT</a>
+	</c:if>
+	<c:if test="${user.name == null }">
+		<a href="login.do">LOGIN</a>
+	</c:if>
 	<hr>
 	
 	<form action="updateBoard.do" method="get">
@@ -46,11 +54,11 @@
 		</tr>
 		<tr>
 			<td bgcolor="orange" width="150">등록일</td>
-			<td><input name="writer" type="text" value="${board.regDate}" disabled/></td>
+			<td><input name="" type="text" value="${board.regDate}" disabled/></td>
 		</tr>
 		<tr>
 			<td bgcolor="orange" width="150">조회수</td>
-			<td><input name="writer" type="text" value="${board.cnt}" disabled/></td>
+			<td><input name="" type="text" value="${board.cnt}" disabled/></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
@@ -62,8 +70,10 @@
 	<hr>
 	<br>
 	<a href="getBoardList.do">게시글 목록</a>&nbsp;&nbsp;&nbsp;
-	<a href="deleteBoard.do?seq=${board.seq}">게시글 삭제</a>&nbsp;&nbsp;&nbsp;
-	<a href="insertBoard.jsp">게시글 등록</a>&nbsp;&nbsp;&nbsp;
+	<c:if test="${user.role == 'Admin' }">
+		<a href="deleteBoard.do?seq=${board.seq}">게시글 삭제</a>&nbsp;&nbsp;&nbsp;
+	</c:if>
+	<a href="insertBoard.do">게시글 등록</a>&nbsp;&nbsp;&nbsp;
 </center>
 </body>
 </html>

@@ -11,8 +11,31 @@
 <body>
 <center>
 	<h1>게시글 목록</h1>
-	<a href="logout.do">LOGOUT</a>
+	<c:if test="${user.name != null }">
+		<h3><font color="red">${user.name}</font> 님 환영합니다.</h3>
+		<a href="logout.do">LOGOUT</a>
+	</c:if>
+	<c:if test="${user.name == null }">
+		<a href="login.do">LOGIN</a>
+	</c:if>
 	<hr>
+	
+	<!-- 검색 시작 -->
+	<form action="searchBoard.do" method="get">
+		<table border="1" cellpadding="0" cellspacing="0" width="800">
+			<tr>
+				<td align="right">
+					<select name="searchCondition">
+						<option value="title">제목
+						<option value="content">내용
+					</select>
+					<input name="searchKeyword" type="text" />
+					<input type="submit" value="검색">
+				</td>
+			</tr>
+		</table>
+	</form>
+	<!-- 검색 종료 -->
 	
 	<table border="1" cellpadding="0" cellspacing="0" width="800">
 		<tr>
@@ -34,7 +57,7 @@
 	</table>
 	<hr>
 	<br>
-	<a href="insertBoard.jsp">글 등록 화면으로 이동</a>
+	<a href="insertBoard.do">글 등록 화면으로 이동</a>
 </center>
 </body>
 </html>

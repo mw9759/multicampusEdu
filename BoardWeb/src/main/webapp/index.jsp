@@ -15,7 +15,7 @@
 			<hr>
 			<br><br><br>
 			
-			<a href="login.jsp">로그인 화면으로 이동</a>
+			<a href="login.do">로그인 화면으로 이동</a>
 			
 			<br><br><br>
 			<a href="getBoardList.do">글 목록 바로가기</a>

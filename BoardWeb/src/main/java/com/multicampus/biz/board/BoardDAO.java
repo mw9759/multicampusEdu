@@ -2,8 +2,8 @@ package com.multicampus.biz.board;
 
 import java.util.List;
 
-public interface BoardDAO {
 
+public interface BoardDAO {
 	// CRUD 기능의 메소드 구현
 	// 조회수 증가
 	void updateCnt(BoardVO vo);
@@ -22,5 +22,8 @@ public interface BoardDAO {
 
 	// 글 목록 검색
 	List<BoardVO> getBoardList(BoardVO vo);
+	
+	// 글 제목 검색
+	List<BoardVO> searchBoardTitleList(BoardVO vo);
 
 }

@@ -13,7 +13,7 @@
 	<context:component-scan base-package="com.multicampus.biz"/>
 	
 	<!-- 실제 사용할 DAO 객체만 등록한다 -->
-	<bean class="com.multicampus.biz.board.BoardDAOSpring"/>
+	<bean class="com.multicampus.biz.board.BoardDAOJdbc"/>
 	
 	<aop:aspectj-autoproxy/>
 	

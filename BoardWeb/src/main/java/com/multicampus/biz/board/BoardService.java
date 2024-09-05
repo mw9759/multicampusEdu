@@ -23,4 +23,6 @@ public interface BoardService {
 	// 글 목록 검색
 	List<BoardVO> getBoardList(BoardVO vo);
 
+	// 글 제목 검색
+	List<BoardVO> searchBoardTitleList(BoardVO vo);
 }

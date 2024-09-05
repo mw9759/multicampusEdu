@@ -59,4 +59,10 @@ public class BoardDAOSpring implements BoardDAO{
 	public void updateCnt(BoardVO vo) {
 		
 	}
+
+	@Override
+	public List<BoardVO> searchBoardTitleList(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

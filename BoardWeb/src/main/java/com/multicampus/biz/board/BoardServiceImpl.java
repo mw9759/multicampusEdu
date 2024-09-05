@@ -42,4 +42,9 @@ public class BoardServiceImpl implements BoardService{
 		boardDAO.updateCnt(vo);
 	}
 
+	@Override
+	public List<BoardVO> searchBoardTitleList(BoardVO vo) {
+		return boardDAO.searchBoardTitleList(vo);
+	}
+
 }
