@@ -1,5 +1,8 @@
 package com.multicampus.controller.board;
 
+import java.io.File;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,9 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.multicampus.biz.board.BoardDAOJdbc;
 import com.multicampus.biz.board.BoardService;
 import com.multicampus.biz.board.BoardVO;
 
@@ -17,11 +21,23 @@ import com.multicampus.biz.board.BoardVO;
 // Model에 board라는 이름의 데이터가 저장될 때, 세션에도 동일하게 저장해라
 @SessionAttributes("board")
 public class BoardController {
-
+	
 	// BoardService 타입의 객체(BoardServiceImple)를 의존선 주입한다
 	@Autowired
 	public BoardService boardService;
 	
+	@RequestMapping("/json.do")
+	// @ResponseBody : 자바 객체를 JSON으로 변환하여 HTTP 응답 프로토콜 body에 출력해준다.
+	public @ResponseBody List<BoardVO> json(BoardVO vo) throws Exception {
+		return boardService.getBoardList(vo);
+	}
+	
+//	@RequestMapping("/json.do")
+//	// @ResponseBody : 자바 객체를 JSON으로 변환하여 HTTP 응답 프로토콜 body에 출력해준다.
+//	public @ResponseBody BoardVO json(BoardVO vo) throws Exception {
+//		return boardService.getBoard(vo);
+//	}
+//	
 	// 글 등록
 	@GetMapping("/insertBoard.do")
 	public String insertBoardView() throws Exception {
@@ -31,6 +47,13 @@ public class BoardController {
 	// 글 등록
 	@PostMapping("/insertBoard.do")
 	public String insertBoard(BoardVO vo) throws Exception {
+		// 1. 파일 업로드 처리
+		MultipartFile upload = vo.getUploadFile();
+		if(!upload.isEmpty()) { // 업로드된 파일 정보가 있다면
+			long time = System.currentTimeMillis();
+			upload.transferTo(new File("C:/DEV/upload_files/" +time+ "_"+ upload.getOriginalFilename()));
+		}
+		// 2. 글등록 처리
 		boardService.insertBoard(vo);
 		return "redirect:getBoardList.do";
 	}

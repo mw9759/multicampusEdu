@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.multicampus.biz.user.UserDAO;
 import com.multicampus.biz.user.UserVO;
@@ -14,7 +13,6 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
-
 	//@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	@GetMapping("/login.do")
 	public String loginView(@ModelAttribute("user") UserVO vo) throws Exception {

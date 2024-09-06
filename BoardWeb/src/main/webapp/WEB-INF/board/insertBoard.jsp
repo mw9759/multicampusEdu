@@ -19,7 +19,7 @@
 	</c:if>
 	<hr>
 	
-	<form action="insertBoard.do" method="post">
+	<form action="insertBoard.do" method="post" enctype="multipart/form-data">
 	<table border="1" cellpadding="0" cellspacing="0" width="500">
 		<tr>
 			<td bgcolor="orange" width="150">제목</td>
@@ -32,6 +32,10 @@
 		<tr>
 			<td bgcolor="orange" width="150">내용</td>
 			<td><textarea name="content" cols="50" rows="10"></textarea></td>
+		</tr>
+		<tr>
+			<td bgcolor="orange" width="150">업로드</td>
+			<td><input name="uploadFile" type="file"/></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
