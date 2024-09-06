@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="User">
+	
+	<!-- SQL의 id는 유일해야 하며, DAO 클래스의 메소드 이름과 동일하게 설정하는 것이 좋다. -->
+	<select id="getUser" resultType="user">
+		select *
+		from users
+		where id = #{id}
+		and password = #{password}
+	</select>
+
+</mapper>

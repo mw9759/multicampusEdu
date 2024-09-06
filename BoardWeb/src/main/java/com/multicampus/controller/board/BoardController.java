@@ -77,11 +77,11 @@ public class BoardController {
 	@RequestMapping("/getBoard.do")
 	public String getBoard(BoardVO vo, Model model) throws Exception {
 		// 조회수 증가
-		BoardVO vo2 = boardService.getBoard(vo);
-		vo2.setCnt(vo2.getCnt()+1);
-		boardService.updateCnt(vo2);
+//		BoardVO vo2 = boardService.getBoard(vo);
+//		vo2.setCnt(vo2.getCnt()+1);
+		boardService.updateCnt(vo);
 		
-		model.addAttribute("board", boardService.getBoard(vo2)); // model
+		model.addAttribute("board", boardService.getBoard(vo)); // model
 		return "getBoard.jsp";   // view
 	}
 
